@@ -29,14 +29,20 @@ class PokemonEntity(models.Model):
                                 related_name ='entity',
                                 verbose_name='Покемон'
                                 )
-    lat = models.FloatField(null=True, verbose_name = 'Широта')
-    lon = models.FloatField(null=True, verbose_name = 'Долгота')
+    lat = models.DecimalField(null=True,
+                              verbose_name = 'Широта',
+                              max_digits=9,
+                              decimal_places=6)
+    lon = models.DecimalField(null=True,
+                              verbose_name = 'Долгота',
+                              max_digits=9,
+                              decimal_places=6)
     appeared_at = models.DateTimeField(null=True, verbose_name = 'Дата появления')
     disappeared_at = models.DateTimeField(null=True, verbose_name = 'Дата исчезновения')
-    level = models.IntegerField(null=True, blank=True, verbose_name = 'Уровень')
-    health = models.IntegerField(null=True, blank=True, verbose_name = 'Здоровье')
-    defence = models.IntegerField(null=True, blank=True, verbose_name = 'Защита')
-    stamina = models.IntegerField(null=True, blank=True, verbose_name = 'Выносливость')
+    level = models.PositiveIntegerField(null=True, blank=True, verbose_name = 'Уровень')
+    health = models.PositiveIntegerField(null=True, blank=True, verbose_name = 'Здоровье')
+    defence = models.PositiveIntegerField(null=True, blank=True, verbose_name = 'Защита')
+    stamina = models.PositiveIntegerField(null=True, blank=True, verbose_name = 'Выносливость')
 
 
     def __str__(self):
